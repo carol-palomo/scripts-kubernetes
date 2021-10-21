@@ -41,7 +41,10 @@ spec:
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: root
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: PASSWORD
         ports:
         - containerPort: 3306
           name: mysql
